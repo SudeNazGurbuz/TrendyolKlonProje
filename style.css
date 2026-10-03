@@ -1,0 +1,466 @@
+*{
+    /* kullanılan tüm elementlerin iç ve dış boşlukarını sıfırladım ve bunların uzunluklarını en boy ölçümüne dahil ettim*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    /* body etiketinim genel özellikleri  */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+main { flex: 1; /* footer kadar boşluk almasını sağlıyor */ }
+a{ /* eklediğim linkler için hazırladım. Üst çubuktaki linklerin altı çizili değil ve beyaz renkte olmasını sağlıyorum */
+    text-decoration: none; color: white;
+}
+img{  /* fotoğrafların genel özellikleri resimler kendi boyutun aşmaz ve blok gibi davranır  */
+    max-width: 100%;  display: block;
+}
+
+/* 
+üst çubuk için css düzeni 
+*/
+
+header{ /* Üst çubuk özellikleri yazı rengini link kısmında ayarladık arka plan turuncu  ve iç boşluğu ayarlı üşs-alt şeklinde*/
+    background-color: #ff7f00; padding: 10px 20px;    
+}
+nav{
+    /* üst çubuğun navigasyon kısmının özellikleri linkler yatay dizili ve ortalı bunun harici satırın başı ve sonunda boşluk bırakılır*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{ /* trendyol yazısı için yazı tipi*/
+    font-size: 1.5rem;  font-weight: bold;
+}
+nav input[type="text"] {
+    /* arama kutusu özellikleri sırasıyla iç boşluğu, genişliği, kenar özelliği -ki ben kenar koymadım- ve kenar yuvarlaklığı*/
+    padding: 8px; 
+    width: 300px;
+    border: none;
+    border-radius: 4px;
+}
+nav .search-bar button {
+    padding: 8px 12px;          /* iç boşluk */
+    font-size: 16px;            /* yazı boyutu */
+    cursor: pointer;            /* fare üzerine gelince el işareti */
+    background-color: #ff6f61;  /* trendyol tarzı turuncu renk */
+    color: white;               /* yazı rengi beyaz */
+    border: none;               /* kenarlık yok */
+    border-radius: 4px;         /* hafif yuvarlatma */
+}
+.nav-links a {
+    /* navigasyon linkleri için yazı tipi boşluk uzunluğu ve fare ile üstüne gelince renk geçişi gibi özellikleri*/
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.nav-links a:hover { color: #222;/* renk geçişnin rengi*/ }
+
+/* 
+ ana ekrandaki kategoriler için css düzeni 
+*/
+
+.categories {
+    display: grid;/*otomatik hizalama*/
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));/* ekran boyutuna göre kutuları yerleştirmek için*/
+    gap: 15px;/*kutular arsı boşluk*/
+    padding: 20px;
+}
+.category {
+   /* her bir kutu için yapılan ayarlar*/
+    display: flex;/* kutluarı yan yana ve dikey hizalamak için kullandım*/
+    text-align: center; 
+    align-items: center;     
+    gap: 20px;               
+    width: 100%;
+    margin: auto;      
+    padding: 20px;
+    background-color: #ffd8b1;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* gölge efekti*/
+
+}
+.category:hover {
+    /* fare ile üzerine gelindiğinde kutuk büyüyor ve gölgesi artıyor*/
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.category img {
+    /* kutu içindeki resimlerin özellikleri*/
+   width: 200px;
+   height: 130px;
+   align-items: left;
+    object-fit: contain; /* resmin orantısını korur*/
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+
+/* 
+ ürün kısmı için görünüm ayarı
+ */
+
+.products {
+    /* Tüm ürünleri kapsayan özellikler */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.product-card {
+    /* Her ürün için özelleştirilmiş özellikler*/
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    /*geçiş efekti animasyonu*/
+}
+.product-card img {
+    /*ürünlerin resimlerinin özellikleri */
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 25px;
+}
+.product-card:hover {
+    /*üstüne gelince arakdaki gölge efekti*/
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.price {
+    /* fiyat kısmının özellikleri*/
+    font-size: 18px;
+    color: #ff6600;
+    margin: 10px 0;
+}
+.product-card button {
+    /* ürünlerin altında bulunan "sepete ekle" butonunun özellikleri*/
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.product-card button:hover {
+    /* butonun efekti*/
+    background-color: #e65c00;
+}
+
+/*
+giriş yap / kayıt ol ekranı için görünüm ayarları
+*/
+
+#auth-section {
+    /* ana konteyner */
+    padding: 40px 20px;
+}
+.auth-container {
+    /* iki kutucuğu kapsayan konteyner*/
+    display: flex;
+    justify-content: space-around;/*kutular arası eşit boşluk*/
+    flex-wrap: wrap;/*ekran boyutuna göre alt satıra geçer*/
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+.auth-box {
+    /*  tek bir kutunun özellikleri*/
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    width: 400px;
+    text-align: center;
+}
+.auth-box h2 {
+    /*kutuların başlığı*/
+    color: #ff6600;
+    margin-bottom: 20px;
+}
+.auth-box input {
+    /* girdi alanları*/
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.auth-box button {
+    /*butonun özellikleri*/
+    width: 95%;
+    padding: 10px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.auth-box button:hover {
+    /* buton efekti*/
+    background-color: #c34e00;
+}
+
+/*
+Sepet Görünüm Ayarlari
+*/
+
+.cart {
+  width: 90%;
+  max-width: 400px;
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: Arial, sans-serif;
+}
+.cart h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+  border-bottom: 2px solid #f27a1a; 
+  padding-bottom: 5px;
+}
+#cart-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#cart-items li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+#cart-items li:last-child {
+  border-bottom: none;
+}
+.cart-total {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+#checkout-btn {
+  width: 100%;
+  background: #f27a1a;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+#checkout-btn:hover {
+  background: #d96910;
+}
+
+/* Hakkımızda bölümü */
+.about {
+    max-width: 100%;       
+    margin: 40px 0 40px 20px;    
+    padding: 20px;         
+    background-color: #fff;
+    border-radius: 8px;     
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+    font-family: Arial, sans-serif;
+}
+.about h1 {
+    font-size: 28px;
+    color: #ff6f61;        
+    margin-bottom: 16px;
+    text-align: center;
+}
+.about p {
+    font-size: 16px;
+    color: #333;           
+    line-height: 1.6;
+    margin-bottom: 12px;
+    text-align: justify; /* paragraf düzeni */
+}
+
+
+/* Tüm iletişim kutusunun görünüm ayarı */
+.contact-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ff7f00;
+    color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.contact-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* İletişim bilgileri */
+.contact-info {
+    text-align: left;
+    margin-bottom: 30px;
+}
+.contact-info span {
+    font-weight: 700;
+    color: #fff9f0;
+}
+
+/*  İletişim Formu için css ayarları */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.contact-form h4 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    width: 100%;
+}
+.contact-form button {
+    padding: 12px;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+.contact-form button:hover {
+    background-color: #444;
+}
+
+
+
+ /* Telif hakkı kurumla alakalı hızlı eriim bilgilendirmelerin olduğu kısım*/
+footer {
+    background-color: #d3cfcf;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+.footer-section h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+.footer-section a {
+    color: #555;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #ff6600;
+}
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    color: #777;
+    font-size: 14px;
+}
+
+/* Responsive  -  Mobil uyumluluk */
+
+@media (max-width: 600px) {
+
+    /* Üst çubuk ve arama */
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .search-bar {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    #search-input, #search-btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* Kategoriler */
+    .categories {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .category {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    /* Hakkımızda */
+    .about {
+        max-width: 95%;
+        margin: 20px;
+        padding: 15px;
+    }
+    .about h1 {
+        font-size: 1.8rem;
+        text-align: left;
+    }
+    .about p {
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: justify;
+    }
+
+    /* Ürün Kartları */
+    .product-card {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    .product-card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Sepet */
+    .cart { padding: 15px; }
+    .cart h2 { font-size: 18px; }
+    .cart li {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 20px;
+        text-align: center;
+    }
+}

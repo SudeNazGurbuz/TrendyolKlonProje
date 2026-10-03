@@ -1,0 +1,8 @@
+# Editör ayarları
+.vscode/
+
+# Kişisel staj raporu
+*STAJ*RAPORU*.pdf
+
+# İndirilen sayfa kopyası; proje tarafından kullanılmıyor
+images/SEPET_files/
